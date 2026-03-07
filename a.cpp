@@ -208,6 +208,11 @@ int main(){
 }
 
 
+
+
+///////////////DATE - 06-03-2026///////////////
+
+
 //////////////////FUNCTIONS //////////
 
 //////////////////////////////PROBLEM 1///////////////////
@@ -331,3 +336,215 @@ int main(){
     cout<<prime(50);
 }
 
+
+
+
+/////////////////////DATE - 07-03-2026/////////
+
+
+//////////////////////PROBLEM 1//////////////////
+// WRITE A FUNCTION TO CONVERT A DECIMAL NUMBER TO THE BINARY NUMBER
+#include <iostream>
+using namespace std;
+
+int binary(int decinum){
+    int ans = 0;
+    int pow = 1;
+    while(decinum>0){
+        int rem = decinum%2;
+        decinum = decinum/2;
+        ans+=(rem*pow);
+        pow*=10;
+    }
+     return ans;
+}
+
+int main(){
+    cout<<binary(50);
+}
+
+////////////////////PROBLEM 2 ////////////////////////
+// WRITE A FUNCTION TO CONVERT BINARY NO. TO DECIMAL
+#include <iostream>
+#include <cmath>
+using namespace std;
+int decimal(int binary){
+    int ans = 0;
+    int power = 0;
+    while(binary>0){
+        int rem = binary%10;
+        binary = binary/10;
+        ans+=(rem*(pow(2,power)));
+        power++;
+    }
+    return ans;
+}
+int main(){
+    cout<<decimal(0001011);
+}
+
+////////////////////PROBLEM 3///////////////////////
+// FIND THE SUM SUM OF ALL EVEN FROM 1 TO 50 USING FUNCTIONS 
+#include <iostream>
+using namespace std;
+int even(int n){
+    int sum = 0;
+    for(int i=1;i<=n;i++){
+        if(i%2==0){
+            sum+=i;
+        }
+    }
+    return sum;
+}
+
+int main(){
+    cout<<even(50);
+}
+
+////////////////////PROBLEM4///////////////////////
+// PRINT ALL TEH PRIME NO.'S FROM 1 TO 20 USING FUNCTIONS
+#include <iostream>
+using namespace std;
+int isPrime(int n){
+    int temp = 0;
+    for(int i =2;i<n;i++){
+        if(n%i==0)
+        temp+=1;
+    }
+    if(temp>0){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+int main(){
+    for(int i = 1;i<=20;i++){
+        if(isPrime(i)==true){
+            cout<<i<<"  ";
+        }
+    }
+}
+
+
+///////////////////////PROBLEM 5//////////////////////////
+// PRINT THE PATTERN F USING FUNCTIONS
+#include <iostream>
+using namespace std;
+void pattern(){
+    for(int i = 0;i<5;i++){
+        for(int j = 0;j<5;j++){
+            if(i==0||j==0||i==2&&j<3){
+            cout<<"*"<<" ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
+int main(){
+    pattern();
+}
+
+
+///////////////////PROBLEM 6///////////////////////
+// PRINT EVEN DIGITS OF A NUMBER USING FUNCTIONS
+#include <iostream>
+using namespace std;
+int even(int n){
+    int sum = 0;
+    while(n>0){
+        int rem = n%10;
+        if(rem%2==0)
+            sum+=rem;
+        n = n/10;
+    }
+    return sum;
+}
+
+int main(){
+    cout<<even(35427);
+}
+
+/////////////////////PROBLEM 7//////////////////////
+// SUM OF ODD DIGITS OF A NUMBER USING FUNCTIONS
+#include <iostream>
+using namespace std;
+int odd(int n){
+    int sum = 0;
+    while(n>0){
+        int rem = n%10;
+        if(rem%2!=0)
+            sum+=rem;
+        n = n/10;
+    }
+    return sum;
+}
+
+int main(){
+    cout<<odd(3577);
+}
+
+///////////////PROBLEM 8/////////////////////////
+// CHECK THE NUMBER IS PLAINDROME OR NOT USING THE FUNCTIONS
+#include <iostream>
+using namespace std;
+void palindrome(int n){
+    int rev = 0;
+    int original_num = n;
+    while(n>0){
+        int digit = n%10;
+        rev = rev*10+digit;
+        n=n/10;
+    }
+    if(rev == original_num){
+        cout<<"palindrome";
+    }else{
+        cout<<"Not Palindrome";
+    }
+}
+
+int main(){
+    palindrome(122103);
+}
+
+
+//////////////////////PROBLEM 9////////////////////
+// CHECK THE NUMBER IS PRIME PALINDROME OR NOT USING THE FUNCTIONS
+#include <iostream>
+using namespace std;
+bool palindrome(int n){
+    int original = n;
+    int rev = 0;
+    while(n>0){
+        int digit = n%10;
+        rev = rev*10+digit;
+        n=n/10;
+    }
+    if(rev==original){
+        return true;
+    }else {
+        return false;
+    }
+}
+
+char* checkPrime(int n){
+    if(palindrome(n)==true){
+        int temp = 0;
+        for(int i = 2;i<n;i++){
+            if(n%i==0)
+            temp+=1;
+        }
+        if(temp==0){
+            return "palindrome and prime";
+        }else{
+            return "Not Prime but Palindrome";
+        }
+    }
+}
+
+
+
+int main(){
+    cout<<checkPrime(3534);
+}
