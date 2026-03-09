@@ -552,7 +552,7 @@ int main(){
 /////////////////-09-03-2026///////////////////
 
 ///////////////PROBLEM1//////////////////
-CHECK IF A NUMBER IS A STRONG NUMBER OR NOT USING FUNCTIONS
+//CHECK IF A NUMBER IS A STRONG NUMBER OR NOT USING FUNCTIONS
 #include <iostream>
 using namespace std;
 int fact(int n){
@@ -586,3 +586,67 @@ int fact(int n){
     check(a);
  }
 
+
+/////////////////PROBLEM2//////////////////
+//FIGURE OUT HOW A NUMBER IS POWER OF 2 
+#include <iostream>
+using namespace std;
+void power(int n){
+    float last = 0;
+    while(n>1){
+       last = n%2;
+       if(n%2==1){
+        last = 1;
+        break;
+       }
+       n=n/2;
+    }
+    if(last==0){
+        cout<<"Power of 2";
+    }else{
+        cout<<"Not a power of 2";
+    }
+}
+
+int main(){
+    int a;
+    scanf("%d",&a);
+    power(a);
+}
+
+
+/////////////////////PROBLEM 3////////////////////
+//PRINT THE REVERSE OF A NUMBER USING FUNCTIONS
+#include <iostream>
+using namespace std;
+int reverse(int n){
+    int rev= 0;
+    while(n>0){
+        int digit = n%10;
+        n = n/10;
+        rev=rev*10+digit;
+    }
+    return rev;
+}
+int main(){
+    int a;
+    scanf("%d",&a);
+    cout<<reverse(a);
+}
+
+////////////////PROBLEM 4///////////////////
+//FIGURE OUT HOW A NUMBER IS POWER OF 2 WITHOUT USING LOOPS
+#include <iostream>
+using namespace std;
+void check(int n){
+    if(n>0 && (n&(n-1))==0){
+        cout<<"Yes Power of 2";
+    }else{
+        cout<<"Not a Power of 2";
+    }
+}
+int main(){
+    int a;
+    scanf("%d",&a);
+    check(a);
+}
