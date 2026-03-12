@@ -139,3 +139,46 @@ int main(){
     sumOf(arr,size);
     return 0;
 }
+
+//////////////PROBLEM 4////////////
+//WRITE A FUNCTION TO SWAP MINIMUM AND MAXIMUM VALUES IN AN ARRAY
+#include <iostream>
+#include <climits>
+using namespace std;
+int max(int arr[],int size){
+    int max = INT_MIN;
+    int idxmax = 0;
+    for(int i = 0;i<size;i++){
+        if(arr[i]>max){
+        max = arr[i];
+        idxmax = i;
+        }
+    }
+    return idxmax;
+}
+int min(int arr[],int size){
+    int min = INT_MAX;
+    int idxmin = 0;
+    for(int i = 0;i<size;i++){
+        if(arr[i]<min){
+        min = arr[i];
+        idxmin = i;
+        }
+    }
+    return idxmin;
+}
+
+void swapMinMax(int arr[],int size){
+    int mini = min(arr,size);
+    int maxx = max(arr,size);
+    swap(arr[mini],arr[maxx]);
+}
+
+int main(){
+    int arr[] = {1,3,4,5,6};
+    int size = sizeof(arr)/sizeof(int);
+    swapMinMax(arr,size);
+    for(int i = 0;i<size;i++){
+        cout<<arr[i]<<" ";
+    }
+}
