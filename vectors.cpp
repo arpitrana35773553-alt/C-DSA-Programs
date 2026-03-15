@@ -219,3 +219,39 @@ int main(){
     cout<<"Largest value in vector is: "<<Largest(vec);
 }
 
+//////////PROBLEM 3//////////////
+//FIND THE SECOND LARGEST ELEMENT IN THE VECTOR
+#include <iostream>
+#include <vector>
+using namespace std;
+int descending(vector<int> vec){
+    int min;
+    for(int i = 0;i<vec.size();i++){
+    for(int i = 1;i<vec.size();i++){
+        if(vec[i]>vec[i-1]){
+            min = vec[i];
+            vec[i]=vec[i-1];
+            vec[i-1] = min;
+        }
+    }
+}
+   for(int i = 0;i<vec.size();i++){
+    if(vec[i]!=vec[0]){
+        return vec[i];
+    }
+   }
+   return vec[0];
+}
+
+int main(){
+    vector<int> vec;
+    int n, val;
+    cout<<"Enter the number of values: ";
+    cin>>n;
+    cout<<"Enter the values:"<<endl;
+    for(int i = 0;i<n;i++){
+        cin>>val;
+        vec.push_back(val);
+    }
+    cout<<"2nd largest number is: "<<descending(vec);
+}
