@@ -255,3 +255,40 @@ int main(){
     }
     cout<<"2nd largest number is: "<<descending(vec);
 }
+
+/////////////16-03-2026/////////////
+////////PROBLEM 1////////////
+//ARRANGE A VECTOR IN SUCH A WAY THAT ALL ZERO'S IN IT COME AT END AND THE ORDER OF OTHER NON-ZERO ELEMENTS SHOULD NOT CHANGE
+#include <iostream>
+#include <vector>
+using namespace std;
+vector <int> sort(vector<int> &vec){
+    int temp = vec.size()-1;
+    for(int i = 0;i<vec.size();i++){
+        if(vec[i]==0&&i<temp){
+            int vc = vec[i];
+            vec[i] = vec[temp];
+            vec[temp] = vc;
+            temp--;
+            i--;
+        }
+    }
+    return vec;
+}
+
+int main(){
+    vector <int> vec;
+    int values;
+    int n;
+    cout<<"Enter the number of values: ";
+    cin >> n;
+    cout<<"Enter the values: "<<endl;
+    for(int i = 0;i<n;i++){
+        cin >> values;
+        vec.push_back(values);
+    }
+    sort(vec);
+    for(int val: vec){
+        cout<<val<<" ";
+    }
+}
