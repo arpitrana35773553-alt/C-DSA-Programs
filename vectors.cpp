@@ -292,3 +292,40 @@ int main(){
         cout<<val<<" ";
     }
 }
+
+////////////17-03-2026////////////
+/////////PROBLEM 1//////////
+////WRITE A FUNCTION TO ROTATE THE VECTOR TO THE RIGHT BY K STEPS
+#include <iostream>
+#include <vector>
+using namespace std;
+vector <int> rotate(vector<int> vec,int n){
+    int  k= vec.size();
+    n = n%k;
+    for(int i = 0;i<n;i++){
+        int last = vec[k-1];
+        for (int j = k-1;j>0;j--){
+            vec[j] = vec [ j-1]; 
+        }
+        vec[0] =last;
+    }
+    return vec;
+}
+ int main(){
+    vector <int> vec;
+    int values;
+    int a,n;
+    cout<<"Enter the number of values: ";
+    cin >> a;
+    cout<<"Enter the values: "<<endl;
+    for(int i = 0;i<a;i++){
+        cin >> values;
+        vec.push_back(values);
+    }
+    cout<<"Enter the no. of times you want to shift: ";
+    cin>>n;
+    vector<int> answer = rotate(vec,n);
+    for(int val: answer){
+        cout<<val<<" ";
+    }
+}
