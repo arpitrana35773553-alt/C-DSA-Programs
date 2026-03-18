@@ -329,3 +329,45 @@ vector <int> rotate(vector<int> vec,int n){
         cout<<val<<" ";
     }
 }
+
+///////////18-03-2026//////////
+////////PROBLEM 1//////////
+//WRITE A FUNCTION TO RETURN ALL LEADER ELEMENTS IN A VECTOR ////
+//AN ELEMENT IS A LEADER IF IT IS GREATER THAN ALL ELEMENTS TO IT'S RIGHT
+#include <iostream>
+#include <vector>
+using namespace std;
+vector <int> leader(vector <int> vec){
+    int n = vec.size();
+    vector <int> ans;
+    for(int i = 0;i<n;i++){
+        int temp = 0;
+        for(int j = i;j<n;j++){
+            if(vec[i]<=vec[j]&&i!=j){
+                temp = 1;
+                break;
+            }
+        }
+        if(temp == 0){
+                ans.push_back(vec[i]);
+            }
+    }
+    return ans;
+}
+
+int main(){
+    vector <int> vec;
+    int n,values;
+    cout<<"Enter the number of values: ";
+    cin>>n;
+    cout<<"Enter the values: "<<endl;
+    for(int i = 0;i<n;i++){
+        cin>>values;
+        vec.push_back(values);
+    }
+    cout<<"The leader values are: ";
+    vector <int> answer = leader(vec);
+    for(int val: answer){
+        cout<<val<<" ";
+    }
+}
