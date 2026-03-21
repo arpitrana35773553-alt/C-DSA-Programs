@@ -406,3 +406,47 @@ int main(){
     }
     cout<<"Max Profit = "<<MaxProfit(prices);
 }
+
+////////////////////21-03-2026/////////////
+///////////////PROBLEM 1//////////////
+////RETURN PAIR IN ARRAY WITH TARGET SUM
+#include <iostream>
+#include <vector>
+using namespace std;
+vector <int> PairSum(vector <int> vec,int target){
+    vector <int> ansVec;
+    int temp = 0;
+    for(int i = 0;i < vec.size();i++){
+        for(int j = 0;j < vec.size();j++){
+            if(vec[i]+vec[j]==target){
+                ansVec.push_back(vec[i]);
+                ansVec.push_back(vec[j]);
+                temp = 1;
+            }
+        }
+        if(temp == 1){
+            break;
+        }
+    }
+    return ansVec;
+}
+
+int main(){
+    int target,n,value;
+    cout<<"Enter the number of values: ";
+    cin >> n;
+    vector <int> vec;
+    cout<<"Enter the values: "<<endl;
+    for(int i = 0;i<n;i++){
+        cin >> value;
+        vec.push_back(value);
+    }
+    cout<<"Enter the target value: ";
+    cin >> target;
+    vector <int> ans = PairSum(vec,target);
+    cout<<"Pairsum of target value is: ";
+    for(int i = 0;i<ans.size();i++){
+        cout<<ans[i]<<" ";
+    }
+}
+
