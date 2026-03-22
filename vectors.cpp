@@ -450,3 +450,42 @@ int main(){
     }
 }
 
+
+
+///////////////22-03-2026/////////////
+//////////////PROBLEM 1///////////
+////RETURN A NEW ARRAY WHERE EACH ELEMENT AT INDEX I IS PRODUCT OF ALL ELEMENTS EXCEPT ITSELF
+#include <iostream>
+#include <vector>
+using namespace std;
+vector <int> productExceptSelf(vector <int> vec){
+    int leftProduct = 1;
+    int rightProduct = 1;
+    int n = vec.size();
+    vector <int> ans(n);
+    for(int i = 0;i < n;i++){
+        ans[i] = leftProduct;
+        leftProduct *= vec[i];
+    }
+    for(int i = n-1;i >= 0;i--){
+        ans[i] *= rightProduct;
+        rightProduct *= vec[i];
+    }
+    return ans;
+}
+int main(){
+    int n,value;
+    cout<<"Enter the number of values: ";
+    cin >> n;
+    vector <int> vec;
+    cout<<"Enter the values: "<<endl;
+    for(int i = 0;i<n;i++){
+        cin >> value;
+        vec.push_back(value);
+    }
+    vector <int> ansVec = productExceptSelf(vec);
+    cout<<"The Answer is: "<<endl;
+    for(int i = 0;i < n;i++){
+        cout<<ansVec[i]<<" ";
+    }
+}
