@@ -489,3 +489,34 @@ int main(){
         cout<<ansVec[i]<<" ";
     }
 }
+
+////////23-03-2026////////////
+//////////PROBLEM 1//////////
+////FIND THE MISSING NUMBER FROM A VECTOR HAVING NUMBERS GIVEN IN RANGE 1 TO N UNSORTED
+#include <iostream>
+#include <vector>
+using namespace std;
+int findMissing(vector <int> vec, int n){
+    int sum = 0;
+    for(int i = 0;i < n-1; i++){
+        sum += vec[i];
+    }
+
+    int firstSum = (n*(n+1))/2;
+
+    int MissingNum = firstSum - sum;
+    return MissingNum; 
+}
+
+int main(){
+    int n,value;
+    cout<<"Enter the number of values: ";
+    cin >> n;
+    vector <int> vec;
+    cout<<"Enter the values: "<<endl;
+    for(int i = 0;i<n;i++){
+        cin >> value;
+        vec.push_back(value);
+    }
+    cout<<"The Missing Value Is: "<<findMissing(vec,n);
+}
