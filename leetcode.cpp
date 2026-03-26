@@ -38,3 +38,21 @@ public:
         return ans;
     }
 };
+
+////////////////26-03-2026///////////
+////PROBLEM: BEST TIME TO BUY AND SELL STOCK 
+//// Platform: LeetCode, Approach: Greedy (Track minimum price), Time Complexity: O(n), Space Complexity: O(1)
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+      int maxprofit = 0;
+      int bestBuy = prices[0];
+      for(int i = 1;i < prices.size();i++){
+        if(prices[i] > bestBuy){
+            maxprofit = max(maxprofit,prices[i] - bestBuy);
+        }
+        bestBuy = min(bestBuy, prices[i]);
+      }
+      return maxprofit;
+    }
+};
