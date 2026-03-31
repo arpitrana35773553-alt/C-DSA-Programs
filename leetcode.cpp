@@ -1,6 +1,5 @@
 ///////////////25-03-2026///////////
-////PROBLEM: TWO SUM
-////PLATFORM: LEETCODE
+////Problem: TWO SUM
 ////Approach: Brute Force, Time Complexity: O(n^2), Space Complexity: O(1)
 class Solution {
 public:
@@ -19,7 +18,7 @@ public:
     }
 };
 
-////PROBLEM: MAJORITY ELEMENT
+////Problem: MAJORITY ELEMENT
 //// Approach: Boyer-Moore Voting Algorithm, Time Complexity: O(n), Space Complexity: O(1)
 class Solution {
 public:
@@ -40,8 +39,8 @@ public:
 };
 
 ////////////////26-03-2026///////////
-////PROBLEM: BEST TIME TO BUY AND SELL STOCK 
-//// Platform: LeetCode, Approach: Greedy (Track minimum price), Time Complexity: O(n), Space Complexity: O(1)
+////Problem: BEST TIME TO BUY AND SELL STOCK 
+////Approach: Greedy (Track minimum price), Time Complexity: O(n), Space Complexity: O(1)
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -59,7 +58,7 @@ public:
 
 /////////////////28-03-2026///////////////
 ////Implement pow(x, n), which calculates x raised to the power n
-////  Platform: LeetCode, Approach: Binary Exponentiation (Exponentiation by Squaring), Time Complexity: O(log n), Space Complexity: O(1)
+////Approach: Binary Exponentiation (Exponentiation by Squaring), Time Complexity: O(log n), Space Complexity: O(1)
 class Solution {
 public:
     double myPow(double x, int n) {
@@ -82,7 +81,6 @@ public:
 
 ///////////////29-03-2026/////////
 ////// Problem: Container With Most Water
-// Platform: LeetCode
 // Approach: Two Pointer (Greedy), Time Complexity: O(n), Space Complexity: O(1)
 class Solution {
 public:
@@ -102,5 +100,36 @@ public:
             }
         }
         return maxWater;
+    }
+};
+
+///////////////31-03-2026/////////////
+//////Problem: Search in Rotated Sorted Array
+////Approach: Binary search, Time complexity: O(logN)
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int start = 0;
+        int end = nums.size() - 1;
+        while(start <= end){
+            int mid = start + ((end - start) / 2);
+            if(target == nums[mid]){
+                return mid;
+            }
+            if(nums[start] <= nums[mid]){
+                if(nums[start] <= target && target <= nums[mid]){
+                    end = mid - 1;
+                }else{
+                    start = mid + 1;
+                }
+            }else{
+                if(nums[mid] <= target && target <= nums[end]){
+                    start = mid + 1;
+                }else{
+                    end = mid - 1;
+                }
+            }
+        }
+        return -1;
     }
 };
