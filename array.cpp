@@ -343,3 +343,36 @@ int main(){
     }
 }
 
+//////////////////01-04-2026/////////////
+////// BUBBLE SORT ALGORITM
+#include <iostream>
+using namespace std;
+void BubbleSort(int arr[], int n){
+    for(int i = 0;i < n - 1;i++){
+        bool isSwap = false;
+        for(int j = 0;j < n - i - 1;j++){
+            if(arr[j] > arr[j+1]){
+                swap(arr[j], arr[j+1]);
+                isSwap = true;
+            }
+        }
+        if(!isSwap){
+            return;
+        }
+    }
+}
+
+int main(){
+    int n;
+    cout<<"Enter The Number of elements: ";
+    cin >> n;
+    cout << "Enter the elements: "<<endl;
+    int arr[n];
+    for(int i = 0; i < n;i++){
+        cin >> arr[i];
+    }
+    BubbleSort(arr, n);
+    for(int i = 0;i < n;i++){
+        cout<<arr[i]<<" "; 
+    }
+}
