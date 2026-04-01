@@ -1,5 +1,5 @@
 ///////////////25-03-2026///////////
-////Problem: TWO SUM
+////Problem1: TWO SUM
 ////Approach: Brute Force, Time Complexity: O(n^2), Space Complexity: O(1)
 class Solution {
 public:
@@ -18,7 +18,7 @@ public:
     }
 };
 
-////Problem: MAJORITY ELEMENT
+////Problem2: MAJORITY ELEMENT
 //// Approach: Boyer-Moore Voting Algorithm, Time Complexity: O(n), Space Complexity: O(1)
 class Solution {
 public:
@@ -39,7 +39,7 @@ public:
 };
 
 ////////////////26-03-2026///////////
-////Problem: BEST TIME TO BUY AND SELL STOCK 
+////Problem3: BEST TIME TO BUY AND SELL STOCK 
 ////Approach: Greedy (Track minimum price), Time Complexity: O(n), Space Complexity: O(1)
 class Solution {
 public:
@@ -57,7 +57,7 @@ public:
 };
 
 /////////////////28-03-2026///////////////
-////Implement pow(x, n), which calculates x raised to the power n
+////Problem4: Implement pow(x, n), which calculates x raised to the power n
 ////Approach: Binary Exponentiation (Exponentiation by Squaring), Time Complexity: O(log n), Space Complexity: O(1)
 class Solution {
 public:
@@ -80,7 +80,7 @@ public:
 };
 
 ///////////////29-03-2026/////////
-////// Problem: Container With Most Water
+////// Problem5: Container With Most Water
 // Approach: Two Pointer (Greedy), Time Complexity: O(n), Space Complexity: O(1)
 class Solution {
 public:
@@ -104,7 +104,7 @@ public:
 };
 
 ///////////////31-03-2026/////////////
-//////Problem: Search in Rotated Sorted Array
+//////Problem6: Search in Rotated Sorted Array
 ////Approach: Binary search, Time complexity: O(logN)
 class Solution {
 public:
@@ -128,6 +128,29 @@ public:
                 }else{
                     end = mid - 1;
                 }
+            }
+        }
+        return -1;
+    }
+};
+
+////////////01-04-2026//////////////
+//////Problem7: Peak index in a mountain array
+//////Approach: Binary search, Time complexity: O(logN)
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        int start = 1;
+        int end = arr.size() - 2;
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            if(arr[mid - 1] < arr[mid] && arr[mid] > arr[mid + 1]){
+                return mid;
+            }
+            if(arr[mid - 1] < arr[mid]){
+                start = mid + 1;
+            }else{
+                end = mid - 1;
             }
         }
         return -1;
