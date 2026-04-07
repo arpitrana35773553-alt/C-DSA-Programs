@@ -376,3 +376,29 @@ int main(){
         cout<<arr[i]<<" "; 
     }
 }
+
+///////////07-04-2026///////////
+///////SELECTION SORT////////
+#include <iostream>
+using namespace std;
+void selectionSort(int arr[], int n){
+    for(int i = 0;i < n - 1;i++){
+        int smallIndex = i;
+        for(int j = i + 1;j < n;j++){
+            if(arr[j] < arr[smallIndex]){
+                smallIndex = j;
+            }
+        }
+        swap(arr[i],arr[smallIndex]);
+    }
+}
+
+int main(){
+    int n = 5;
+    int arr[] = {4,3,1,2,5};
+    selectionSort(arr,n);
+    for(int i = 0;i < n;i++){
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
