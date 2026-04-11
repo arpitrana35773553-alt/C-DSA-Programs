@@ -191,3 +191,123 @@ public:
         return -1;
     }
 };
+
+
+//////////////11-04-2026//////////
+/////////////BOOK ALLOCATION PROBLEM USING BINARY SEARCH
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool isValid(vector<int> &arr,int n,int m,int mid){
+    int student = 1;
+    int pages = 0;
+    int maxPages = mid;
+    for(int i = 0;i < n;i++){
+        if(arr[i] > maxPages){
+            return false;
+        }
+        if(pages + arr[i] <= maxPages){
+            pages += arr[i];
+        }else{
+            student++;
+            pages = arr[i];
+        }
+    }
+    if(student <= m){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+int allocateBooks(vector <int> &arr, int n, int m){
+    if(m > n){
+        return -1;
+    }
+    int start = 0;
+    int sum = 0;
+    for(int i = 0;i < n;i++){
+        sum += arr[i];
+    }
+    int ans  = -1;
+    int end = sum;
+    while(start <= end){
+        int mid = start + (end - start)/2;
+        if(isValid(arr,n,m,mid)){
+            ans = mid;
+            end = mid - 1;
+        }else{
+            start = mid + 1;
+        }
+    }
+    return ans;
+}
+
+int main(){
+    vector<int> arr = {2,1,3,4};
+    int n = 4, m = 2;
+    cout<<allocateBooks(arr,n,m)<<endl;
+    return 0;
+}
+
+/////////////11-04-2026/////////
+////PAINTER'S PARTITION PROBLEM SOLVED USING BINARY SEARCH
+#include <iostream>
+#include <vector>
+using namespace std;
+bool isPossible(vector <int> &arr, int n, int m, int mid){
+    int painter = 1;
+    int time = 0;
+    for(int i = 0;i < n;i++){
+        if(arr[i] > mid){
+            return false;
+        }
+        if(arr[i] + time <= mid){
+            time += arr[i];
+        }else{
+            painter++;
+            time = arr[i];
+        }
+    }
+    if(painter <= m){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+int minimumTime(vector <int> &arr, int n,int m){
+    int start  = 0;
+    int end = 0;
+    for(int i = 0;i < n;i++){
+        end += arr[i];
+    }
+    int ans;
+    while(start <= end){
+        int mid = start + (end - start) / 2;
+        if(isPossible(arr,n,m,mid)){
+            ans = mid;
+            end = mid - 1;
+        }else{
+            start = mid + 1;
+        }
+    }
+    return ans;
+}
+
+int main(){
+int n,m,value;
+cout<<"Enter the number of boards: ";
+cin>>n;
+cout<<"Enter the number of painters: ";
+cin>>m;
+vector <int> arr;
+cout<<"Enter The unit size of boards: ";
+for(int i = 0;i < n;i++){
+    cin>>value;
+    arr.push_back(value);
+}
+cout<<"The minimum amount of time required to paint is: "<<minimumTime(arr,n,m)<<endl;
+return 0;
+}
