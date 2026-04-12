@@ -1,9 +1,9 @@
-// #include <iostream>
-// using namespace std;
-// int main(){
-//     char str[] = "hello"; 
-//     cout<<str[2]<<endl;
-// }
+#include <iostream>
+using namespace std;
+int main(){
+    char str[] = "hello"; 
+    cout<<str[2]<<endl;
+}
 
 ///////////INPUT IN STRINGS////////
 #include <iostream>
