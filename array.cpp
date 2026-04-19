@@ -432,3 +432,43 @@ int main(){
         cout<<arr[i]<<" ";
     }
 }
+
+////////19-04-2026///////
+////SORT ARRAY BASED ON ABSOLUTE DIFFERENCE USING SELECTION SORT
+#include <iostream>
+#include <cmath>
+using namespace std;
+void sortByDiff(int arr[], int n, int k){
+    for(int i = 0;i < n;i++){
+        int smallIdx = i;
+        for(int j = i + 1;j < n;j++){
+            if(abs(k - arr[i]) == abs(k - arr[j])){
+                if(arr[smallIdx] > arr[j]){
+                    smallIdx = j;
+                }
+            }
+            if(abs(k - arr[smallIdx]) > abs(k - arr[j])){
+                smallIdx = j;
+            }
+        }
+        swap(arr[i],arr[smallIdx]);
+    }
+}
+
+int main(){
+    int n;
+    cout<<"Enter the number of elements: ";
+    cin >> n;
+    int k;
+    cout<<"Enter the number for difference: ";
+    cin>>k;
+    int arr[n];
+    cout<<"Enter the elements: ";
+    for(int i = 0;i < n;i++){
+        cin>>arr[i];
+    }
+    sortByDiff(arr,n,k);
+    for(int i = 0;i < n;i++){
+        cout<<arr[i]<<"  ";
+    }
+}
