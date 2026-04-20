@@ -472,3 +472,35 @@ int main(){
         cout<<arr[i]<<"  ";
     }
 }
+
+////INSERT AN ELEMENT E IN ALL EVEN INDICES OF ARRAY
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    cout<<"Enter the number of elements: ";
+    cin >> n;
+    int num;
+    cout<<"Enter the number for insertion: ";
+    cin>>num;
+    int original = n;
+    int arr[2*n];
+    cout<<"Enter the elements: ";
+    for(int i = 0;i < n;i++){
+        cin>>arr[i];
+    }
+    for(int i = 0;i < 2*original;i++){
+        if(i % 2 == 0){
+            int idx = i;
+            for(int j = n - 1;j >= i;j--){
+                arr[j + 1] = arr[j];
+            }
+            n++;
+            arr[idx] = num;
+            i++;
+        }
+    }
+    for(int i = 0;i < n;i++){
+        printf("%d ",arr[i]);
+    }
+}
