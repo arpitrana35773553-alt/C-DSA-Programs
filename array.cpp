@@ -474,6 +474,7 @@ int main(){
 }
 
 ////INSERT AN ELEMENT E IN ALL EVEN INDICES OF ARRAY
+//////////20-04-2026////////
 #include <iostream>
 using namespace std;
 int main(){
