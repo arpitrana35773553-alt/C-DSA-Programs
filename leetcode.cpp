@@ -311,3 +311,58 @@ for(int i = 0;i < n;i++){
 cout<<"The minimum amount of time required to paint is: "<<minimumTime(arr,n,m)<<endl;
 return 0;
 }
+
+//////////AGGRESSIVE COWS PROBLEM/////////
+////ASSIGN C COWS TO N STALLS SUCH THAT MINIMUM DISTANCE BETWEEN THEM IS LARGEST POSSIBLE.
+////RETURN LARGEST MINIMUM DISTANCE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool isPossible(vector <int> arr,int n,int maxcows,int minAllowed){
+    int cows = 1;
+    int last = arr[0];
+    for(int i = 1;i < n;i++){
+        if((arr[i] - last) >= minAllowed){
+            cows++;
+            last = arr[i];
+        }
+        if(cows == maxcows){
+            return true;
+        }
+    }
+    return false;
+}
+int Minimum(vector <int> &arr,int n,int m){
+    sort(arr.begin(),arr.end());
+    int start = arr[0];
+    int end = arr[n - 1];
+    int maxcows = m;
+    int mid,ans;
+    while(start <= end){
+        mid = start + (end - start) / 2;
+        if(isPossible(arr,n,maxcows,mid)){
+            ans = mid;
+            start = mid + 1;
+        }else{
+            end = mid - 1;
+        }
+    }
+    return ans;
+}
+
+int main(){
+    int n,m,value;
+    cout<<"Enter the number of values: ";
+    cin>>n;
+    cout<<"Enter the number of cows: ";
+    cin>>m;
+    cout<<"Enter the values in vector: ";
+    vector <int> arr;
+    for(int i = 0;i < n;i++){
+        cin>>value;
+        arr.push_back(value);
+    }
+    cout<<"Largest Minimum distance is = "<<Minimum(arr,n,m);
+}
