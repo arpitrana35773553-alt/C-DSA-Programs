@@ -63,3 +63,24 @@ int main(){
     e1.input();
     e1.display();
 }
+
+#include <iostream>
+#include <string>
+using namespace std;
+class Credentials{
+    private:
+    string username;
+    string password;
+    public:
+    void member(){
+        cin >> username;
+        cin >> password;
+        cout << username << " " << password;
+    }
+};
+int main(){
+    Credentials c;
+    c.member();
+    return 0;
+}
+
