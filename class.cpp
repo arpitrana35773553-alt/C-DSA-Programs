@@ -177,3 +177,34 @@ int main(){
     }
    }
 }
+
+#include <iostream>
+using namespace std;
+class calculator{
+    public:
+    void addition(int a, int b){ //// Normal function declaration
+        cout<<"Addition = "<<a+b<<endl;
+    }
+    int sub (int a, int b){  // inline funtion
+        return a-b;
+    }
+    void multiplication(int a, int b);
+
+    static void division(int a, int b){ ////Decalaration with static
+        cout<<"Division = "<<a/b<<endl;
+    }
+};
+
+void calculator::multiplication(int a, int b){
+    cout<<"Multiplication = "<<a*b;
+}
+
+int main(){
+    calculator c;
+    c.addition(10,20);
+    cout<<"Subtraction = "<<c.sub(200,10)<<endl;
+    c.multiplication(10,20);
+    cout<<endl;
+    calculator::division(200,10);
+}
+
