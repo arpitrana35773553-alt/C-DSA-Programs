@@ -208,3 +208,137 @@ int main(){
     calculator::division(200,10);
 }
 
+// Write a C++ program to demonstrate the use of public and private access specifiers using a class Student.
+#include <iostream>
+using namespace std;
+class student{
+    private:
+    int marks;
+    public:
+    void setmarks(){
+        cout<<"Enter the marks: ";
+        cin >> marks;
+    }
+    void display(){
+        cout<<"The marks are: "<<marks;
+    }
+};
+int main(){
+    student s;
+    s.setmarks();
+    s.display();
+}
+
+
+Write a C++ program to create a class BankAccount.
+
+The class should contain:
+
+account number as a private data member
+balance as a private data member
+
+Create the following public member functions:
+
+deposit()
+→ to add money to balance
+withdraw()
+→ to subtract money from balance if sufficient balance is available
+display()
+→ to display account number and current balance
+
+In the main() function:
+
+create an object of the class
+input account details
+perform deposit and withdrawal operations
+display final balance
+
+#include <iostream>
+using namespace std;
+class BankAccount{
+    private:
+    int accountno;
+    int balance;
+    public:
+    void deposit(int n){
+        balance = n;
+    }
+    void withdraw(int m){
+        if(balance > m){
+            balance = balance - m;
+        }else{
+            cout<<"Insufficient balance";
+        }
+    }
+    void display(){
+        cout<<"Balance = "<<balance;
+    }
+};
+int main(){
+    BankAccount b;
+    b.deposit(1000);
+    b.withdraw(5000);
+    b.display();
+}
+
+#include <iostream>
+using namespace std;
+class Prices{
+    private:
+    int price;
+
+    public:
+    Prices(){
+        price = 500;
+        cout<<"Constructor Called"<<endl;
+    }
+    void display(){
+        cout<<price;
+    }
+};
+int main(){
+    Prices p;
+    p.display();
+}
+
+#include <iostream>
+using namespace std;
+class Rectangle{
+    private:
+    int l;
+    int b;
+    public:
+    Rectangle(){
+        cin>> l;
+        cin>> b;
+    }
+    void display(){
+        cout<<l*b;
+    }
+};
+int main(){
+    Rectangle r;
+    r.display();
+}
+ 
+#include <iostream>
+#include <string.h>
+using namespace std;
+class Name{
+    private:
+    string name;
+    public:
+    Name(){
+        name = "Iron Man";
+    }
+    void display();
+};
+
+void Name::display(){
+    cout<<name;
+}
+
+int main(){
+    Name n;
+    n.display();
+}
