@@ -168,6 +168,120 @@ int main(){
     cout << facto(n);
 }
 
+//REVERSING AN ARRAY USING RECURSIONS
+#include <iostream>
+using namespace std;
+void reverse(int arr[], int n,int i,int original){
+    if(i >= n){
+        for(int i = 0;i <= original;i++){
+        cout << arr[i] << " ";
+    }
+        return;
+    }else{
+        int temp = arr[i];
+        arr[i] = arr[n];
+        arr[n] = temp;
+    }
+    reverse(arr,--n,++i,original);
+}
+int main(){
+    int arr[] = {1,2,3,4,5};
+    int n = sizeof(arr) / sizeof(arr[0]) - 1;
+    int i = 0;
+    int original = n;
+    reverse(arr,n,i,original);
+}
 
 
+//BUBBLE SORT BY DIFFERENT WAY
+#include <iostream>
+using namespace std;
+void sort(int arr[],int n,int i,int count){
+    if(i == n){
+        ++count;
+        i = 0;
+    }
+    if(count == n){
+        for(int i = 0;i <= n;i++){
+            cout << arr[i] <<" ";
+        }
+        return;
+    }
+    if(arr[i] > arr[i + 1]){
+        swap(arr[i],arr[i + 1]);
+    } 
+    sort(arr,n,++i,count);
 
+}
+int main(){
+    int m;
+    cout << "Enter the number of elements: ";
+    cin >> m;
+    int arr[m];
+    for(int i = 0;i < m;i++){
+        cin >> arr[i];
+    }
+    int n = sizeof(arr)/sizeof(arr[0]) - 1;
+    int i = 0;
+    int count = 0;
+    if(m == 1){
+        cout << arr[i];
+        return 0;
+    }
+    sort(arr,n,i,count);
+}
+
+
+////SELECTION SORT
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+    int arr[n];
+    for(int i = 0;i < n;i++){
+        cin >> arr[i];
+    }
+    for(int i = 0;i < n;i++){
+        int min = i;
+        for(int j = i + 1;j < n;j++){
+            if(arr[min] > arr[j]){
+                min = j;
+            }
+        }
+        swap(arr[i],arr[min]);
+    }
+    for(int i = 0;i < n;i++){
+        cout << arr[i] << " ";
+    }
+}
+
+#include <iostream>
+using namespace std;
+int main(){
+   int n;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+    int arr[n];
+    for(int i = 0;i < n;i++){
+        cin >> arr[i];
+    } 
+    // int target;
+    // cout << "Enter the target: ";
+    // cin >> target;
+    // for(int i = n - 1;i >= 0;i--){
+    //     if(arr[i] > target){
+    //         arr[i] = target;
+    //         break;
+    //     }
+    //}
+    for(int i = n - 1;i >= 0;i--){
+        if(arr[i] > arr[i + 1]){
+            swap(arr[i],arr[i + 1]);
+        }
+    }
+    for(int i = 0;i < n;i++){
+        cout << arr[i] << " ";
+    }
+}

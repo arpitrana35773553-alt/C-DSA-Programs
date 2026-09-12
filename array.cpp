@@ -531,3 +531,57 @@ int main(){
     }
 }
 
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    cout << "Enter the nuber of elements: ";
+    cin >> n;
+    int arr[n];
+    cout << "Enter the elements: ";
+    for(int i = 0;i < n;i++){
+        cin >> arr[i];
+    }
+    int num = 4;
+    int idx = 3;
+    int temp = 0;
+    for(int i = n - 1;i >= 0;i--){
+        if(idx == i){
+             arr[i + 1] = arr[i];
+            arr[i] = num;
+            break;
+        }else{
+            arr[i + 1] = arr[i];
+        }
+    }
+    for(int  i = 0;i < n;i++){
+        cout << arr[i] << " ";
+    }
+}
+
+#include <iostream>
+using namespace std;
+int main(){
+    int n;
+    cout << "Enter the nuber of elements: ";
+    cin >> n;
+    int arr[n];
+    cout << "Enter the elements: ";
+    for(int i = 0;i < n;i++){
+        cin >> arr[i];
+    }
+    for(int i = 1;i < n;i++){
+        int j = i - 1;
+        int key = arr[i];
+        while(j >= 0 && arr[j] > key){
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+    for(int i = 0;i < n;i++){
+        cout << arr[i] << " ";
+    }
+}
+
+

@@ -554,3 +554,65 @@ int main(){
     e1.isEligible();
     e1.print();
 }
+
+#include <iostream>
+using namespace std;
+class Employee{
+    public:
+    int id;
+    string name;
+    double salary;
+    void input(){
+        cin >> id;
+        cin >> name;
+        cin >> salary;
+    }
+    void print(){
+        cout << id << endl;
+        cout << name << endl;
+        cout << salary << endl;
+    }
+};
+int main(){
+    Employee e1;
+    e1.input();
+    Employee e2;
+    e2.input();
+    if(e1.salary > e2.salary){
+        e1.print();
+    }else if(e1.salary < e2.salary){
+        e2.print();
+    }else{
+        cout << "Both employees have same salary";
+    }
+}
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+class Calculate{
+    public:
+    int length;
+    int breadth;
+    void input(){
+        cout <<"Enter the length: ";
+        cin >> length;
+        cout <<"Enter the breadth: ";
+        cin >> breadth;
+    }
+    inline int Area(){
+        return length * breadth;
+    }
+    inline int Perimeter(){
+        return 2*(length + breadth);
+    }
+    void output(){
+        cout << "Area = "<< setw(5) <<Area() << endl;
+        cout << "Perimeter = "<< setw(5) <<Perimeter();
+    }
+};
+int main(){
+    Calculate c1;
+    c1.input();
+    c1.output();
+}
