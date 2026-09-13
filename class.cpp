@@ -616,3 +616,169 @@ int main(){
     c1.input();
     c1.output();
 }
+
+#include <iostream>
+using namespace std;
+class Reverse{
+    private:
+    int x;
+    public:
+    void input(){
+        cout << "Enter the function: ";
+        cin >> x;
+    }
+    friend int reverse(Reverse r);
+};
+int reverse(Reverse r){
+    int num = 0;
+    while(r.x > 0){
+        int digit = r.x % 10;
+        num = (num * 10) + digit;
+        r.x = r.x / 10;
+    }
+    return num;
+}
+int main(){
+    Reverse r;
+    r.input();
+    cout << reverse(r);
+}
+
+#include <iostream>
+using namespace std;
+class Salary{
+    public:
+    double salary;
+    void input(){
+        cout << "Enter the original salary: ";
+        cin >> salary;
+    }
+    void updateSalary(double salary){
+        salary = (salary*2) + 5000;
+        cout << "Updated Salary = "<< salary << endl;
+    }
+    void output(){
+        cout << "Original salary = "<<salary;
+    }
+};
+int main(){
+    Salary s;
+    s.input();
+    s.updateSalary(s.salary);
+    s.output();
+}
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+class Student{
+    public:
+    string name;
+    int rollno;
+    int marks1, marks2, marks3;
+    void input(){
+        cout << "Enter the name of student: ";
+        cin.ignore();
+        getline(cin,name);
+        cout << "Enter the roll number: ";
+        cin >> rollno;
+        cout << "Enter the marks of students: ";
+        cin >> marks1 >> marks2 >> marks3;
+    }
+    int totalMarks(){
+        return marks1 + marks2 + marks3;
+    }
+    double percentage(){
+        return (totalMarks()/300.0)*100;
+    }
+    void studentDetails(){
+        cout << "Name = " << name << endl;
+        cout << "Roll no = " << rollno << endl;
+        cout << "Marks = " << marks1 << " " << marks2 << " " << marks3 <<endl;
+        cout << "Total Marks = " << totalMarks() << endl;
+        cout << "Percentage = " << fixed << setprecision(2) << percentage() << endl;
+    }
+};
+int main(){
+    int n;
+    cout << "Enter the number of students: ";
+    cin >> n;
+    cin.ignore();
+    Student s[n];
+    for(int i = 0;i < n;i++){
+        s[i].input();
+    }
+    for(int i = 0;i < n;i++){
+        s[i].studentDetails();
+    }
+}
+
+#include <iostream>
+using namespace std;
+class Wallet{
+    public:
+    string ownerName;
+    int walletId;
+    double balance = 0.0;
+    static int totalWallet;
+    Wallet(){
+        totalWallet++;
+    }
+
+    void input(){
+        cout << "Enter name: ";
+        cin.ignore();
+        getline(cin,ownerName);
+        cout << "Enter wallet id: ";
+        cin >> walletId;
+    }
+
+     void displayWalletDetails(){
+        cout << "Name = " << ownerName << endl;
+        cout << "Wallet id = " << walletId << endl;
+        cout << "Initial Balance = " << balance << endl;
+    }
+
+    void addMoney(int amount){
+        balance = balance + amount;
+        cout << "Transaction Succesfull" << endl;
+    }
+
+    void spendMoney(int amount){
+        if(balance >= amount){
+            balance = balance - amount;
+        }else{
+            cout << "Insufficient Balance" << endl;
+        }
+    }
+
+    void displayBalance(){
+        cout << "Final Balance = "<<balance << endl;
+    }
+    static void displayWalletCount(){
+        cout << "Total Wallets = " << totalWallet << endl;
+    }
+};
+int Wallet::totalWallet = 0;
+int main(){
+    int n;
+    cout << "Enter the number of wallets: ";
+    cin >> n;
+    Wallet w[n];
+    for(int i = 0;i < n;i++){
+        w[i].input();
+    }
+    for(int i = 0;i < n;i++){
+        w[i].displayWalletDetails();
+        int addmoney, spendmoney;
+        cout << "Enter amount to add: ";
+        cin >> addmoney;
+        w[i].addMoney(addmoney);
+        cout << "Amount to withdraw: ";
+        cin >> spendmoney;
+        w[i].spendMoney(spendmoney);
+        w[i].displayBalance();
+    }
+    Wallet::displayWalletCount();
+    return 0;
+}
