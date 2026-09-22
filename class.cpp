@@ -782,3 +782,78 @@ int main(){
     Wallet::displayWalletCount();
     return 0;
 }
+
+
+#include <iostream> 
+#include <string.h>
+using namespace std;
+class Book{
+    public:
+    string title;
+    string author;
+    int book_id;
+    string status;
+    bool available;
+    static int count;
+
+    Book(){
+        count++;
+    }
+    void input(){
+        cout << "Enter the book title: " << endl;
+        cin.ignore();
+        getline(cin,title);
+        cout << "Enter the author name: " << endl;
+        getline(cin,author);
+        cout << "Status: ";
+        getline(cin, status);
+        cout << "Enter the book_id:" << endl; 
+        cin >> book_id;
+    }
+
+    void displayBookDetails(){
+        cout << "Title = " << title << endl;
+        cout << "Author Name = " << author << endl;
+        cout << "Status = " << status << endl;
+        cout << "Book Id = " << book_id << endl;
+    }
+
+    void issueBook(){
+        if(available){
+            cout << "Book Issued";
+            available = false;
+        }
+    }
+
+    void returnBook(){
+        cout << "Book Returned";
+        available = true;
+    }
+
+    void checkStatus(){
+        if(available){
+            cout << "Available";
+        }else{
+            cout << "Not Available";
+        }
+    }
+};
+
+int main(){
+    int n;
+    cout << "Enter the number of books: ";
+    cin >> n;
+    Book b[n];
+    for(int i = 0;i < n;i++){
+        b[i].input();
+    }
+
+    for(int i = 0;i < n;i++){
+        b[i].displayBookDetails();
+        b[i].issueBook();
+        b[i].returnBook();
+        b[i].checkStatus();
+    }
+}
+
+
