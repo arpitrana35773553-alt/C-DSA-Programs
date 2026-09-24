@@ -857,3 +857,157 @@ int main(){
 }
 
 
+#include <iostream>
+using namespace std;
+class Student{
+    public:
+    string name;
+    int rollno;
+    int marks1, marks2, marks3;
+
+    void input(){
+        cout << "Enter the name: ";
+        cin.ignore();
+        getline(cin,name);
+        cout << "Enter roll number: ";
+        cin >> rollno;
+        cout << "Enter the marks: ";
+        cin >> marks1 >> marks2 >> marks3;
+    }
+    void print(){
+        cout << "Name - " << name << endl;
+        cout << "Roll no - " << rollno << endl;
+        cout << "Marks 1 = " << marks1 <<" " << "Marks 2 = " << marks2 <<" " <<"Marks 3 = "<<marks3 << endl; 
+    }
+};
+
+int main(){
+    int n;
+    cout << "Enter the number of students: ";
+    cin >> n;
+    Student s[n];
+    for(int i = 0;i < n;i++){
+        s[i].input();
+    }
+    for(int i = 0;i < n;i++){
+        s[i].print();
+    }
+}
+
+#include <iostream>
+using namespace std;
+class Employee{
+    private:
+    int id;
+    string name;
+    double salary;
+    string department;
+    public:
+    static int count;
+    Employee(){
+        count++;
+    }
+    void input(){
+        cout <<"Enter employee ID: ";
+        cin >> id;
+        cout << "Enter Employee name: ";
+        cin.ignore();
+        getline(cin,name);
+        cout << "Enter Salary: ";
+        cin >> salary;
+        cout << "Enter department Name: ";
+        cin.ignore();
+        getline(cin,department);
+    }
+
+    void print(){
+        cout << "Name = " << name << endl;
+        cout << "Employee ID = " << id << endl;
+        cout << "Salary = " << salary << endl;
+        cout << "Department = " << department << endl;
+    }
+
+    static void printCount(){
+        cout << "Total number of employees: " << count << endl;
+    }
+
+    void search(int id, Employee e[]){
+        for(int i = 0;i < count;i++){
+            if(id == e[i].id){
+                e[i].print();
+                return;
+            }
+        }
+        cout << "Employee not found." << endl;
+    }
+    void search(string name, Employee e[]){
+        for(int i = 0;i < count;i++){
+            if(e[i].name == name){
+                e[i].print();
+                return;
+            }
+        }
+        cout << "Employee not found." << endl;
+    }
+    void increaseSalary(int id,Employee e[],int n = 10){
+        for(int i = 0;i < count;i++){
+            if(id == e[i].id){
+                e[i].salary += (e[i].salary * n)/100;
+            }
+        }
+    }
+    friend void compareSalary(Employee e1, Employee e2);
+
+    void highestSalary(Employee e[]){
+        int max = 0;
+        for(int i = 1;i < count;i++){
+            if(e[i].salary > e[max].salary){
+                max = i;
+            }
+        }
+        cout << "Employee with highest salary = " << e[max].name;
+    }
+};
+int Employee:: count = 0;
+void compareSalary(Employee e1, Employee e2){
+    if(e1.salary > e2.salary){
+        cout <<"Employee 1 has higher salary." << endl;
+    }else{
+        cout << "Employee 2 has higher salary." << endl;
+    }
+
+}
+
+int main(){
+    int n;
+    cout << "Enter the number of employees: ";
+    cin >> n;
+    Employee e[n];
+    for(int i = 0;i < n;i++){
+        e[i].input();
+    }
+    for(int i = 0;i < n;i++){
+        e[i].print();
+    }
+    cout << Employee::count;
+}
+
+Node* deleteNode(Node* head,int key){
+    if (Node* head == nullptr){
+        return nullptr;
+    }
+    if(head -> data == key){
+        head = head -> next;
+        return head;
+    }
+    Node * temp = head;
+    while(temp -> next != nullptr){
+        if(temp -> next -> data == key){
+            temp = temp -> next -> next;
+            return temp;
+        }
+    }
+
+
+}
+

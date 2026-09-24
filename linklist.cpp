@@ -961,3 +961,296 @@ int main(){
     }
     
 }
+
+
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    Node * next;
+    Node(int val){
+        data = val;
+        next = nullptr;
+    }
+};
+void del(Node *&head,int value){
+    if(head -> data == value){
+        Node * del = head;
+        head = head -> next;
+        delete del;
+    }
+    Node * temp = head;
+    while(temp -> next != nullptr){
+        if(temp -> next -> data == value){
+            Node * del = temp -> next;
+            temp -> next = temp -> next -> next;
+            delete del;
+        }else{
+            temp = temp -> next;
+        }
+    }
+}
+int main(){
+    int n;
+    cout << "Enter the number of nodes: ";
+    cin >> n;
+    Node * head = nullptr;
+    Node * tail = nullptr;
+    for(int i = 0;i < n;i++){
+        int value;
+        cin >> value;
+        Node * newnode = new Node(value);
+        if(head == nullptr){
+            head = newnode;
+            tail = newnode;
+        }else{
+            tail -> next = newnode;
+            tail = newnode;
+
+        }
+    }
+}
+
+////INSERTING AT BEGINNING
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    Node * prev;
+    Node * next;
+    Node(int val){
+        data = val;
+        next = nullptr;
+        prev = nullptr;
+    }
+};
+void insertAtBeginning(Node * &head,Node * &tail){
+    int value;
+    cout << "Enter the value to insert: ";
+    cin >> value;
+    Node * newnode = new Node(value);
+    if(head == nullptr){
+        head = newnode;
+        tail = newnode;
+        return;
+    }
+    newnode -> next = head;
+    head -> prev = newnode;
+    head = newnode;
+}
+int main(){
+    int n;
+    cout << "Enter the number of nodes: ";
+    cin >> n;
+    Node * head = nullptr;
+    Node * tail = nullptr;
+    for(int i = 0;i < n;i++){
+        int value;
+        cin >> value;
+        Node * newnode = new Node(value);
+        if(head == nullptr){
+            head = newnode;
+            tail = newnode;
+        }else{
+            tail -> next = newnode;
+            newnode -> prev = tail;
+            tail = newnode;
+        }
+    }
+    insertAtBeginning(head,tail);
+    Node * temp = head;
+    while(temp != nullptr){
+        cout << temp-> data << "  ";
+        temp = temp -> next;
+    }
+}
+
+
+///INSERT AT A POSITION
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    Node * prev;
+    Node * next;
+    Node(int val){
+        data = val;
+        next = nullptr;
+        prev = nullptr;
+    }
+};
+void insertAtPosition(Node*& head,Node*& tail,int value,int position){
+    Node* newNode=new Node(value);
+
+    if(position<=1){
+        newNode->next=head;
+
+        if(head!=nullptr)
+            head->prev=newNode;
+        else
+            tail=newNode;
+
+        head=newNode;
+        return;
+    }
+
+    Node* temp=head;
+
+    for(int i=1;i<position-1 && temp!=nullptr;i++)
+        temp=temp->next;
+
+    if(temp==nullptr){
+        delete newNode;
+        return;
+    }
+
+    newNode->next=temp->next;
+    newNode->prev=temp;
+
+    if(temp->next!=nullptr)
+        temp->next->prev=newNode;
+    else
+        tail=newNode;
+
+    temp->next=newNode;
+}
+int main(){
+    int n;
+    cout << "Enter the number of nodes: ";
+    cin >> n;
+    Node * head = nullptr;
+    Node * tail = nullptr;
+    for(int i = 0;i < n;i++){
+        int value;
+        cin >> value;
+        Node * newnode = new Node(value);
+        if(head == nullptr){
+            head = newnode;
+            tail = newnode;
+        }else{
+            tail -> next = newnode;
+            newnode -> prev = tail;
+            tail = newnode;
+        }
+    }
+    insertAtPosition(head,tail,30,3);
+    Node * temp = head;
+    while(temp != nullptr){
+        cout << temp-> data << "  ";
+        temp = temp -> next;
+    }
+}
+
+
+/////////DELETE FROM BEGIN
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    Node * prev;
+    Node * next;
+    Node(int val){
+        data = val;
+        next = nullptr;
+        prev = nullptr;
+    }
+};
+void deleteAtBeginning(Node *&head,Node*&tail){
+    Node * del = head;
+    if(head == nullptr){
+        return;
+    }else if(head == tail){
+        head = nullptr;
+        tail = nullptr;
+        delete del;
+        return;
+    }else{
+        head = head -> next;
+        head -> prev = nullptr;
+        delete del;
+    }
+}
+int main(){
+    int n;
+    cout << "Enter the number of nodes: ";
+    cin >> n;
+    Node * head = nullptr;
+    Node * tail = nullptr;
+    for(int i = 0;i < n;i++){
+        int value;
+        cin >> value;
+        Node * newnode = new Node(value);
+        if(head == nullptr){
+            head = newnode;
+            tail = newnode;
+        }else{
+            tail -> next = newnode;
+            newnode -> prev = tail;
+            tail = newnode;
+        }
+    }
+    deleteAtBeginning(head,tail);
+    Node * temp = head;
+    if(head == nullptr){
+        cout << "No nodes found.";
+        return 0;
+    }
+    while(temp != nullptr){
+        cout << temp-> data << "  ";
+        temp = temp -> next;
+    }
+}
+
+
+/////////DELETE FROM BEGIN
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    Node * prev;
+    Node * next;
+    Node(int val){
+        data = val;
+        next = nullptr;
+        prev = nullptr;
+    }
+};
+void deleteAtPosition(Node *&head,Node*&tail){
+    int position;
+    cout << "Enter the position to delete: ";
+    cin >> position;
+    Node * temp = head;
+    
+}
+int main(){
+    int n;
+    cout << "Enter the number of nodes: ";
+    cin >> n;
+    Node * head = nullptr;
+    Node * tail = nullptr;
+    for(int i = 0;i < n;i++){
+        int value;
+        cin >> value;
+        Node * newnode = new Node(value);
+        if(head == nullptr){
+            head = newnode;
+            tail = newnode;
+        }else{
+            tail -> next = newnode;
+            newnode -> prev = tail;
+            tail = newnode;
+        }
+    }
+    deleteAtPosition(head,tail);
+    Node * temp = head;
+    if(head == nullptr){
+        cout << "No nodes found.";
+        return 0;
+    }
+    while(temp != nullptr){
+        cout << temp-> data << "  ";
+        temp = temp -> next;
+    }
+}
+
+
