@@ -285,3 +285,42 @@ int main(){
         cout << arr[i] << " ";
     }
 }
+
+
+///RECURSION FACTORIAL
+#include <iostream>
+using namespace std;
+int rec(int n){
+    if(n == 0){
+        return 1;
+    }
+    if(n == 1){
+        return 1;
+    }
+    return n*rec(n - 1);
+}
+int main(){
+    int n ;
+    cin >> n;
+    cout << rec(n);
+}
+
+#include <iostream>
+using namespace std;
+void rec(int arr[],int n){
+    int sum;
+    for(int i = 0;i < n;i++){
+        sum += arr[i];
+    }
+    int half = sum / 2;
+    if(sum % 2 != 0){
+        cout << "Array cannot be formed";
+        return;
+    }
+
+}
+int main(){
+    int arr[3] = {1,4,3};
+    
+
+}
