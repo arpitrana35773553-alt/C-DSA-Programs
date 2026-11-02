@@ -167,3 +167,59 @@ int main(){
 }
 
 
+//////////////////////CREATING A TREE USING USER INPUT ////////////////////////////
+#include <iostream>
+#include <queue>
+using namespace std;
+struct Node{
+    int data;
+    Node * left;
+    Node * right;
+    Node(int val){
+        data = val;
+        left = right = nullptr;
+    }
+};
+
+void BFS(Node * root){
+    if(root == nullptr){
+        return;
+    }
+    queue <Node*> q;
+    q.push(root);
+    while(!q.empty()){
+        Node * current = q.front();
+        q.pop();
+        
+        cout << current -> data << " ";
+
+        if(current -> left != nullptr){
+            q.push(current -> left);
+        }
+        if(current -> right != nullptr){
+            q.push(current -> right);
+        }
+    }
+}
+Node * buildTree(){
+    int value;
+    cout << "Enter Node value(-1 for no node)";
+    cin >> value;
+
+    if(value == -1){
+        return nullptr;        
+    }
+
+    Node * root = new Node(value);
+
+    cout << "Enter left child of " << value << endl;
+    root -> left = buildTree();
+    cout << "Enter right child of " << value << endl;
+    root -> right = buildTree();
+    return root;
+}
+int main(){
+    cout << "Enter the values for tree.";
+    Node * root = buildTree();
+    BFS(root);
+}

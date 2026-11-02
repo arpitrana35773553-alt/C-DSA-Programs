@@ -519,5 +519,4 @@ int main(){
         vec.push_back(value);
     }
     cout<<"The Missing Value Is: "<<findMissing(vec,n);
-}
-
+} 
