@@ -398,3 +398,166 @@ int main(){
 
     return 0;
 }
+
+////////////////////BFS TRAVERSAL///////////////////////////
+#include <iostream>
+#include <queue>
+using namespace std;
+struct Node{
+    int data;
+    Node * left;
+    Node * right;
+    Node(int val){
+        data = val;
+        left = right = nullptr;
+    }
+};
+Node * buildTree(){
+    int value;
+    cout << "Enter the value: ";
+    cin >> value;
+    if(value == -1){
+        return nullptr;
+    }
+    Node * root = new Node(value);
+    root -> left = buildTree();
+    root -> right = buildTree();
+    return root;
+}
+
+void BFS(Node * root){
+    if(root == nullptr){
+        return;
+    }
+    queue <Node*> q;
+    q.push(root);
+    while(!q.empty()){
+        Node * current = q.front();
+        q.pop();
+        cout << current -> data << " ";
+        if(current -> left != nullptr){
+            q.push(current -> left);
+        }
+        if(current -> right != nullptr){
+            q.push(current -> right);
+        }
+    }
+}
+
+int main(){
+    Node * root = buildTree();
+    BFS(root);
+}
+
+////////////////////////TRAVERSALS///////////////////////
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    Node * left;
+    Node * right;
+    Node(int val){
+        data = val;
+        left = right = nullptr;
+    }
+};
+
+Node * buildTree(){
+    int value;
+    cout << "Enter the value ";
+    cin >> value;
+    if(value == -1){
+        return nullptr;
+    }
+    Node * root = new Node(value);
+    root -> left = buildTree();
+    root -> right = buildTree();
+    return root;
+}
+
+void InOrder(Node * root){
+    if(root == nullptr){
+        return;
+    }
+    InOrder(root -> left);
+    cout << root -> data << " ";
+    InOrder(root -> right);
+}
+
+void PreOrder(Node * root){
+    if(root == nullptr){
+        return;
+    }
+    cout << root -> data << " ";
+    PreOrder(root -> left);
+    PreOrder(root -> right);
+}
+
+void PostOrder(Node * root){
+    if(root == nullptr){
+        return;
+    }
+    PostOrder(root -> left);
+    PostOrder(root -> right);
+    cout << root -> data << " ";
+}
+
+
+int main(){
+    Node * root  = buildTree();
+    cout << "InOrder: ";
+    InOrder(root);
+    cout << "PreOrder: ";
+    PreOrder(root);
+    cout << "PostOrder: ";
+    PostOrder(root);
+}
+
+
+////////////////COUNT NODES////////////////
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    Node * left;
+    Node * right;
+    Node(int value){
+        data = value;
+        right = left = nullptr;
+    }
+};
+
+Node * buildTree(){
+    int value;
+    cout << "Enter the value ";
+    cin >> value;
+    if(value == -1){
+        return nullptr;
+    }
+    Node * root = new Node(value);
+    root -> left = buildTree();
+    root -> right = buildTree();
+    return root;
+}
+
+void InOrder(Node * root,int &count){
+    if(root == nullptr){
+        return;
+    }
+    InOrder(root -> left,count);
+    count++;
+    InOrder(root -> right,count); 
+}
+void countNodes(Node * root){
+    if(root == nullptr){
+        return;
+    }
+    int count = 0;
+    InOrder(root,count);
+    cout << count;
+}
+
+int main(){
+    Node * root = buildTree();
+    countNodes(root);
+}
