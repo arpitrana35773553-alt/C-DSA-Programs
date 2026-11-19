@@ -193,3 +193,79 @@ int main(){
     peek();
 }
 
+
+#include <iostream>
+#include <stack>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int precendence(char ch){
+    if(ch == '^'){
+        return 3;
+    }else if(ch == '*' || ch == '/' || ch == '%'){
+        return 2;
+    }else if(ch == '+' || ch == '-'){
+        return 1;
+    }else{
+        return -1;
+    }
+}
+
+bool isOperator(char ch){
+    return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '%' || ch == '^';
+}
+
+string infixToPostfix(string infix){
+    stack <char> st;
+    string postfix = "";
+    for(int i = 0;i < infix.length();i++){
+        char ch = infix[i];
+
+        if(isspace(ch)){
+            continue;
+        }
+
+        if(isalnum(ch)){
+            postfix += ch;
+        }
+
+        else if(ch == '('){
+            st.push(ch);
+        }
+
+        else if(ch == ')'){
+            while(!st.empty() && st.top() != '('){
+                postfix += st.top();
+                st.pop();
+            }
+            if(!st.empty()){
+            st.pop();
+        }
+        }
+
+        else if (isOperator(ch)){
+            while(!st.empty() && st.top() != '(' &&
+            (precendence(st.top()) > precendence(ch) ||
+            (precendence(st.top()) == precendence(ch) && ch != '^'))){
+                postfix += st.top();
+                st.pop();
+            }
+            st.push(ch);
+        }
+    }
+    while(!st.empty()){
+            postfix += st.top();
+            st.pop();
+        }
+
+    return postfix;
+}
+
+int main(){
+    string infix;
+    cout << "Enter the string to convert: ";
+    getline(cin,infix);
+    cout << "Converted infix expression to postfix = " << infixToPostfix(infix);
+    return 0;
+}
